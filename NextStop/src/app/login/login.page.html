@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>TravelBuddy Pro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="login-container">
+    <div class="welcome-section">
+      <h1>Welcome Back!</h1>
+      <p>Sign in to manage your travel plans</p>
+    </div>
+
+    <div class="form-container">
+      <ion-item class="custom-item">
+        <ion-label position="stacked">
+          <ion-icon name="person"></ion-icon>
+          Username
+        </ion-label>
+        <ion-input 
+          [(ngModel)]="username" 
+          type="email" 
+          placeholder="Enter your username"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item class="custom-item">
+        <ion-label position="stacked">
+          <ion-icon name="lock-closed"></ion-icon>
+          Password
+        </ion-label>
+        <ion-input 
+          [(ngModel)]="password" 
+          type="password" 
+          placeholder="Enter your password"
+        ></ion-input>
+      </ion-item>
+
+      <ion-button 
+        expand="block" 
+        (click)="login()"
+        class="login-button"
+      >
+        <ion-icon name="log-in" slot="start"></ion-icon>
+        Sign In
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

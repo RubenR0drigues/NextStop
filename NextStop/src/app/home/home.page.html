@@ -1,0 +1,62 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>TravelBuddy Pro</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" mode="md">
+  <ion-fab
+    slot="fixed"
+    vertical="bottom"
+    horizontal="end"
+    button
+    expand="block"
+    (click)="openModal()"
+  >
+    <ion-fab-button color="primary">
+      <ion-icon name="airplane"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <div class="welcome-section">
+    <h1>Welcome to TravelBuddy Pro</h1>
+    <p>Your personal travel companion</p>
+  </div>
+
+  <ion-list lines="full">
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label>Your Travel Plans</ion-label>
+        <ion-badge slot="end" color="primary">{{ notes?.length || 0 }}</ion-badge>
+      </ion-item-divider>
+      
+      <ion-item
+        *ngFor="let note of notes"
+        (click)="openEditModal(note)"
+        style="cursor: pointer"
+        class="travel-item"
+      >
+        <ion-label>
+          <h2>{{ note.description }}</h2>
+          <p>
+            <ion-icon name="location"></ion-icon>
+            Status: {{ note.state }}
+          </p>
+        </ion-label>
+        <ion-button
+          slot="end"
+          color="danger"
+          fill="clear"
+          (click)="deleteConfirmation(note.id); $event.stopPropagation()"
+        >
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+</ion-content>

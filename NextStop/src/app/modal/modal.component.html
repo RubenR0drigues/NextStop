@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{ note ? 'Edit Travel Plan' : 'New Travel Plan' }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="form-container">
+    <ion-item class="custom-item">
+      <ion-label position="stacked">
+        <ion-icon name="airplane"></ion-icon>
+        Destination
+      </ion-label>
+      <ion-textarea 
+        [(ngModel)]="newNote.description" 
+        placeholder="Where do you want to go?"
+        rows="3"
+      ></ion-textarea>
+    </ion-item>
+
+    <ion-item class="custom-item">
+      <ion-label position="stacked">
+        <ion-icon name="flag"></ion-icon>
+        Status
+      </ion-label>
+      <ion-select [(ngModel)]="newNote.state" interface="action-sheet">
+        <ion-select-option value="TODO">Planning</ion-select-option>
+        <ion-select-option value="IN_PROGRESS">In Progress</ion-select-option>
+        <ion-select-option value="DONE">Completed</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button 
+      expand="block" 
+      (click)="saveNote()"
+      class="save-button"
+    >
+      <ion-icon name="save" slot="start"></ion-icon>
+      {{ note ? 'Update Travel Plan' : 'Save Travel Plan' }}
+    </ion-button>
+  </div>
+</ion-content>
